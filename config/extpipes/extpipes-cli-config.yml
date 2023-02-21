@@ -22,30 +22,47 @@ logger:
         level: INFO
 
 # extpipe-pattern only documentation atm
-extpipe-pattern: '{source}:{short-name}:{rawtable-name}:{suffix}'
+extpipe-pattern: 'csv:sap:assets:{suffix}'
 
 # can contain multiple contacts, can be overwritten on pipeline level
 default-contacts:
-    - name: <Contact name>
-      email: <Contact email>
-      role: <Role name>
+    - name: Lixiang Sun
+      email: lsun@slb.com
+      role: Bootcamp 10 Administrator
       send-notification: true
 
 rawdbs:
   # list of raw-dbs > containing rawtables > containing pipelines
-    - rawdb-name: <node_name>:db
-      dataset-external-id: <node_name>:ds
-      short-name: <Short name for raw DB>
+    - rawdb-name: src:001:sap:db
+      dataset-external-id: src:001:sap:ds
+      short-name: SAP
       rawtables:
-          - rawtable-name: <table name>
+          - rawtable-name: assets
             pipelines:
         # source is a short-name identifying the pipeline source being
         # a 'db-extractor (db)', an 'Azure Function (az-func)',
         # or 'Azure Data Factory (adf)', 'Python script (py)', ..
-                - source: <source type>
+                - source: csv
                   schedule: On trigger
                   contacts:
-                      - name: <Contact name>
-                        email: <Contact e-mail>
-                        role: <Contact role>
+                      - name: Lixiang Sun
+                        email: lsun@slb.com
+                        role: Bootcamp 10 Data Administrator
+                        send-notification: false
+
+    - rawdb-name: src:002:opcua:db
+      dataset-external-id: src:002:opcua:ds
+      short-name: OPCUA
+      rawtables:
+          - rawtable-name: datapoints
+            pipelines:
+        # source is a short-name identifying the pipeline source being
+        # a 'db-extractor (db)', an 'Azure Function (az-func)',
+        # or 'Azure Data Factory (adf)', 'Python script (py)', ..
+                - source: ice-cream-api
+                  schedule: On trigger
+                  contacts:
+                      - name: Lixiang Sun
+                        email: lsun@slb.com
+                        role: Bootcamp 10 Data Administrator
                         send-notification: false
