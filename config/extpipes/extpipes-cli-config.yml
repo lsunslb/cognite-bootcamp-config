@@ -22,7 +22,7 @@ logger:
         level: INFO
 
 # extpipe-pattern only documentation atm
-extpipe-pattern: 'csv:sap:assets:{suffix}'
+extpipe-pattern: csv:sap:assets:{suffix}
 
 # can contain multiple contacts, can be overwritten on pipeline level
 default-contacts:
